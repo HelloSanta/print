@@ -1,0 +1,180 @@
+
+//@import "animate/animate.scss";
+@import "compass/css3";
+@import "_extend.scss";
+@import "_drupal-block-style.scss";
+//@import "_drupal-block-style.scss"
+
+
+
+
+
+
+/*************************************
+                              兼容標籤
+**************************************/
+
+//座標定位
+//example:@include transform-xy(x軸,y軸)
+@mixin transform-xy($trans-width, $trans-height) {
+    -ms-transform: translate($trans-width, $trans-height);
+    -webkit-transform: translate($trans-width, $trans-height);
+    transform: translate($trans-width, $trans-height);
+}
+
+
+/*************************************
+                              佈局
+**************************************/
+//區塊排列數,行距
+//example: @include grid(列數,間距)    *間距請下％數
+@mixin grid($numPerRow, $margin) {
+    width: ((100% - (($numPerRow - 1) * $margin)) / $numPerRow);
+    &:nth-child(n) {
+        margin-bottom: $margin;
+        margin-right: $margin;
+        float: left;
+    }
+    &:nth-child(#{$numPerRow}n) {
+        margin-right: 0;
+    }
+}
+
+
+
+
+// 絕對位置置中
+//example:@include ab-center(區塊寬度,區塊高度)
+@mixin ab-center($width: null, $height: null) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @if not $width and not $height {
+        transform: translate(-50%, -50%);
+    }
+    @else if $width and $height {
+        width: $width;
+        height: $height;
+        margin: -($width / 2) #{0 0} -($height / 2);
+    }
+    @else if not $height {
+        width: $width;
+        margin-left: -($width / 2);
+        transform: translateY(-50%);
+    }
+    @else {
+        height: $height;
+        margin-top: -($height / 2);
+        transform: translateX(-50%);
+    }
+}
+
+
+
+// 截取文本text-overflow
+@mixin text-overflow($substract:0) {
+    //`$substract`单位为%
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100% - $substract;
+}
+
+
+
+
+
+
+
+/*************************************
+                             特效區
+**************************************/
+
+
+/********************
+                 圖片
+********************/
+// 放大旋轉
+//example:@include zoom-large(圖片放大的倍率)
+@mixin zoom-large($trans-size) {
+    overflow: hidden;
+    img {
+        @include transition(all 0.6s ease-in-out);
+        @include display-flex;
+    }
+    img:hover {
+        @include transform(scale($trans-size) rotate(5deg));
+    }
+}
+
+
+
+
+/********************
+                 圖型
+********************/
+
+// 三角形
+//example:@include triangle(寬度,三角形方向,顏色)
+@mixin triangle($width, $dir, $color) {
+    @if $dir==up {
+        width: 0px;
+        height: 0px;
+        border-left: $width/2 solid transparent;
+        border-right: $width/2 solid transparent;
+        border-bottom: $width/2 solid $color;
+    }
+    @else if $dir==down {
+        width: 0px;
+        height: 0px;
+        border-left: $width/2 solid transparent;
+        border-right: $width/2 solid transparent;
+        border-top: $width/2 solid $color;
+    }
+    @else if $dir==right {
+        width: 0px;
+        height: 0px;
+        border-top: $width/2 solid transparent;
+        border-bottom: $width/2 solid transparent;
+        border-left: $width/2 solid $color;
+    }
+    @else if $dir==left {
+        width: 0px;
+        height: 0px;
+        border-top: $width/2 solid transparent;
+        border-bottom: $width/2 solid transparent;
+        border-right: $width/2 solid $color;
+    }
+}
+
+
+/********************
+                 選單
+********************/
+
+/********************
+                 按鈕
+********************/
+
+/*************************************
+                             動畫區
+**************************************/
+//keyframes
+@mixin keyframes($name) {
+    @-webkit-keyframes #{$name} {
+        @content;
+    }
+    @-moz-keyframes #{$name} {
+        @content;
+    }
+    @-ms-keyframes #{$name} {
+        @content;
+    }
+    @-o-keyframes #{$name} {
+        @content;
+    }
+    @keyframes #{$name} {
+        @content;
+    }
+}
+
