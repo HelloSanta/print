@@ -209,17 +209,7 @@ $zen-auto-include-item-base: false;
   }
 }
 
-@mixin grid($numPerRow, $margin) {
-    width: ((100% - (($numPerRow - 1) * $margin)) / $numPerRow);
-    &:nth-child(n) {
-        margin-bottom: $margin;
-        margin-right: $margin;
-        float: left;
-    }
-    &:nth-child(#{$numPerRow}n) {
-        margin-right: 0;
-    }
-}
+
 $zen-column-count: 24;
 @media all and (min-width: 480px) {
   #header{
@@ -263,7 +253,28 @@ $zen-column-count: 24;
         @include zen-grid-item(8,1,right);
         @include zen-grid-item-base();
       }
-      .view-print-video{
+      //code for 首頁熱門討論區塊----------------------------------------------------------------
+      #block-views-print-discuss-block-1{
+         @include zen-grid-item(8,1);
+        @include zen-grid-item-base();
+        @include zen-clear(left);
+      }
+      //end 首頁熱門討論區塊
+      //code for首頁最新消息區塊----------------------------------------------------------------
+      #block-views-news-page-block-3{
+        @include zen-clear(right);
+        @include zen-grid-item(8,9);
+        @include zen-grid-item-base();
+      }
+      //end 首頁最新消息區塊
+      //code for 首頁影片區塊--------------------------------------------------------------------------
+      #block-views-print-video-block-1{
+        @include zen-clear(right);
+        @include zen-grid-item(8,1,right);
+        @include zen-grid-item-base();
+      }
+      //end for 首頁影片區塊
+      .video-page{
         .views-row{
            -webkit-box-sizing: border-box;
           -moz-box-sizing: border-box;

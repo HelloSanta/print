@@ -147,7 +147,7 @@ $font-color1:#ffffff;
 <div class="taxonomy">[field_news_taxonomy]</div>
 </div>*/
 
-//圖片至左，分類在右下(border-top)
+//圖片至左，內文置右,分類在右下(border-top)
 .style-float-img2 {
     .style-wrapper {
         position: relative;
@@ -194,4 +194,83 @@ $font-color1:#ffffff;
 <div class="content-wrapper">
 <div class="title">[title]</div>
 <div class="create-date">[created]</div>
+</div>*/
+
+//圖片至左(上方有播放遮罩)，內容置右(且垂直至中)
+.style-float-img3 {
+    @include transition(all 0.5s);
+    .style-wrapper {
+        position: relative;
+        @extend %clearfix;
+        .image {
+            position: relative;
+            float: left;
+            width: 20%;
+            &:after {
+                content: "";
+                display: block;
+                @include triangle(20px, right, #ffffff);
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                @include transform-xy (-50%, -50%);
+            }
+            a {
+                &:after {
+                    @include transition(all 0.5s);
+                    @extend %ab-full-screen;
+                    background: rgba(0, 0, 0, 0.6);
+                    content: "";
+                    display: block;
+                }
+                &:before {
+                    content: "";
+                    display: block;
+                    width: 40px;
+                    height: 40px;
+                    border: 2px solid #ffffff;
+                    border-radius: 100px;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    @include transform-xy (-50%, -50%);
+                    z-index: 10;
+                }
+            }
+            img {
+                float: left;
+            }
+        }
+        .content-wrapper {
+            position: absolute;
+            //width: 80%;
+            left: 20%;
+            height: 100%;
+            box-sizing: border-box;
+            padding: 0px 5%;
+            @extend %text-v-center;
+        }
+    }
+    &:hover {
+        .style-wrapper {
+            .image {
+                a {
+                    &:after {
+                        @include transition(all 0.5s);
+                        opacity: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+/*<div class="style-wrapper">
+<div class="image">[field_youtube]</div>
+<div class="content-wrapper">
+<div class ="content">
+<div class="title">[title]</div>
+<div class="create-date">[created]</div>
+</div>
 </div>*/

@@ -14,7 +14,8 @@
 /* HTML element (SMACSS base) rules */
 
 @import "normalize";
-@import "sass-collection/_mixin.scss";
+@import "sass-collection/_sass-code.scss";
+//@import "sass-collection/_drupal-block-style.scss";
 
 /* Layout rules */
 
@@ -179,6 +180,7 @@ body {
         height: auto;
     }
 }
+
 #main {
     #content {
         img {
@@ -190,6 +192,7 @@ body {
         #block-views-print-main-recommend-block-1,
         #block-views-print-main-recommend-block-2,
         #block-views-print-main-recommend-block-3 {
+            @extend %clearfix;
             .views-row {
                 position: relative;
                 .views-field-title {
@@ -215,99 +218,147 @@ body {
                 margin-bottom: 0px;
             }
         }
+        //code for 首頁熱門討論區塊----------------------------------------------------------------
+        #block-views-print-discuss-block-1 {
+            .view-content {
+                padding-bottom: 20px;
+                .item-list {
+                    ul {
+                        li.views-row {}
+                    }
+                }
+            }
+            .more-link {
+                position: absolute;
+                a {
+                    padding: 10px 20px;
+                    background: $main-color1;
+                }
+            }
+        }
+        //end 首頁熱門討論區塊
+        //code for首頁最新消息區塊----------------------------------------------------------------
+        #block-views-news-page-block-3 {
+            .view-content {
+                padding-bottom: 20px;
+                .item-list {
+                    ul {
+                        li.views-row {}
+                    }
+                }
+            }
+            .more-link {
+                position: absolute;
+                a {
+                    padding: 10px 20px;
+                    background: $main-color1;
+                }
+            }
+        }
+        //end 首頁最新消息區塊
+        //code for 首頁影片區塊--------------------------------------------------------------------------
+        #block-views-print-video-block-1 {
+            .view-content {
+                .item-list {
+                    ul {
+                        li.views-row {
+                            @include grid(1, 2%);
+                        }
+                    }
+                }
+            }
+        }
+        //end for 首頁影片區塊
     }
-    .view-print-video{
-		.views-row{
-			position: relative;
-			margin-bottom: 10px;
-			.views-field-field-image{
-				.background-cover{
-					height: 100%;
-					width: 100%;
-					position: absolute;
-					left: 0;
-					top: 0;
-					display: block;
-					.cover-wrapper{
-						display: inline-block;
-						height: 100%;
-						width: 100%;
-						position: relative;
-						span.play{
-						  display: block;
-						  width: 60px;
-						  height: 60px;
-						  border-radius: 60px;
-						  border: 7px solid #FFF;
-						  position: absolute;
-						  top: 50%;
-						  left: 50%;
-						  margin-left: -33px;
-						  margin-top: -33px;
-						  -o-transition:all 0.3s ease-in-out ;
-						  -webkit-transition:all 0.3s ease-in-out ;
-						  -moz-transition:all 0.3s ease-in-out ;
-						  opacity: 0.7;
-						  &:after{
-							display:block;
-							content: ' ';
-							width: 0;
-							height: 0;
-							border-style: solid;
-							border-width: 15px 0 15px 30px;
-							border-color: transparent transparent transparent #ffffff;
-							position: relative;
-							left: 20px;
-							top: 15px;
-
-							}
-							&:hover{
-								 opacity: 1;
-							}
-						 }
-					}
-				}
-			}
-			.views-field-title{
-				position: absolute;
-				bottom: 30px;
-				left: 30px;
-				font-weight: bold;
-				color: #fff;
-				font-size: 24px;
-				a{
-					color: #fff;
-				}
-			}
-		}
-		.views-row-first{
-			margin-bottom: 30px !important;
-			.background-cover{				
-				.cover-wrapper{					
-					span.play{
-						width: 100px !important;
-						 height: 100px !important;
-						   margin-left: -50px !important;
-						  margin-top: -50px !important;
-						 &:after{
-						 	@extend 
-							display:block;
-							content: ' ';
-							width: 0;
-							height: 0;
-							border-style: solid;
-							border-width: 30px 0 30px 60px !important;
-							border-color: transparent transparent transparent #ffffff;
-							position: relative;
-							left: 30px !important;
-							top: 20px !important;
-
-						}
-					}
-				}
-			}
-		}
-	}
+    .video-page {
+        .views-row {
+            position: relative;
+            margin-bottom: 10px;
+            .views-field-field-image {
+                .background-cover {
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    display: block;
+                    .cover-wrapper {
+                        display: inline-block;
+                        height: 100%;
+                        width: 100%;
+                        position: relative;
+                        span.play {
+                            display: block;
+                            width: 60px;
+                            height: 60px;
+                            border-radius: 60px;
+                            border: 7px solid #FFF;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            margin-left: -33px;
+                            margin-top: -33px;
+                            -o-transition: all 0.3s ease-in-out;
+                            -webkit-transition: all 0.3s ease-in-out;
+                            -moz-transition: all 0.3s ease-in-out;
+                            opacity: 0.7;
+                            &:after {
+                                display: block;
+                                content: ' ';
+                                width: 0;
+                                height: 0;
+                                border-style: solid;
+                                border-width: 15px 0 15px 30px;
+                                border-color: transparent transparent transparent #ffffff;
+                                position: relative;
+                                left: 20px;
+                                top: 15px;
+                            }
+                            &:hover {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+            .views-field-title {
+                position: absolute;
+                bottom: 30px;
+                left: 30px;
+                font-weight: bold;
+                color: #fff;
+                font-size: 24px;
+                a {
+                    color: #fff;
+                }
+            }
+        }
+        .views-row-first {
+            margin-bottom: 30px !important;
+            .background-cover {
+                .cover-wrapper {
+                    span.play {
+                        width: 100px !important;
+                        height: 100px !important;
+                        margin-left: -50px !important;
+                        margin-top: -50px !important;
+                        &:after {
+                            display: block;
+                            content: ' ';
+                            width: 0;
+                            height: 0;
+                            border-style: solid;
+                            border-width: 30px 0 30px 60px !important;
+                            border-color: transparent transparent transparent #ffffff;
+                            position: relative;
+                            left: 30px !important;
+                            top: 20px !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 .region-bottom {
