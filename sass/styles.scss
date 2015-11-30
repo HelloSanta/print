@@ -1,222 +1,268 @@
-/**
+    /**
  * @file
  * Styles are organized using the SMACSS technique. @see http://smacss.com/book/
  *
  * When you turn on CSS aggregation at admin/config/development/performance, all
  * of these @include files will be combined into a single file.
  */
-
-
-/* Import Sass mixins, variables, Compass modules, etc. */
-
-@import "init";
-
-/* HTML element (SMACSS base) rules */
-
-@import "normalize";
-@import "sass-collection/_sass-code.scss";
-//@import "sass-collection/_drupal-block-style.scss";
-
-/* Layout rules */
-
-@import "layouts/responsive";
-
-/* Component (SMACSS module) rules */
-
-@import "components/misc";
-// Optionally, add your own components here.
-@import "print";
-
-/* SMACSS theme rules */
-
-
-/* @import "theme-A"; */
-
-
-/* @import "theme-B"; */
-
-$main-color1:#7ac8cc;
-$text-color:#4f4f4f;
-$border-color1:#4f4f4f;
-%text-v-center {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-align-items: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-}
-
-body {
-    font-family: "微軟正黑體", Helvetica, Arial;
-    img {
-        height: auto !important;
+    /* Import Sass mixins, variables, Compass modules, etc. */
+    
+    @import "init";
+    /* HTML element (SMACSS base) rules */
+    
+    @import "normalize";
+    @import "sass-collection/_sass-code.scss";
+    //@import "sass-collection/_drupal-block-style.scss";
+    /* Layout rules */
+    
+    @import "layouts/responsive";
+    /* Component (SMACSS module) rules */
+    
+    @import "components/misc";
+    // Optionally, add your own components here.
+    @import "print";
+    /* SMACSS theme rules */
+    /* @import "theme-A"; */
+    /* @import "theme-B"; */
+    
+    $main-color1:#7ac8cc;
+    $text-color:#4f4f4f;
+    $border-color1:#4f4f4f;
+    %text-v-center {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-justify-content: center;
+        justify-content: center;
     }
-    a {
-        text-decoration: none;
+    
+    body {
+        font-family: "微軟正黑體", Helvetica, Arial;
+        img {
+            height: auto !important;
+        }
+        a {
+            text-decoration: none;
+        }
     }
-}
-
-#page {
-    a {
-        text-decoration: none;
-    }
-    ul {
-        margin: 0px;
-        padding: 0px;
-    }
-    li {
-        list-style-image: none;
-        list-style-type: none;
-    }
-    .block {
-        margin: 0px;
-        padding: 0px;
-    }
-}
-
-#header {
-    padding: 0px;
-    .block {
-        margin: 0px;
-    }
-    #logo {
-        display: inline-block;
-        float: left;
-        text-align: center;
-        background-color: #202020;
-        padding: 20px 0px;
-    }
-    ul {
-        margin: 0px;
-        padding: 0px;
+    
+    #page,
+    .banner,
+    .header_bottom_wrap {
+        line-height: 2em;
+        img {
+            height: auto;
+        }
+        a {
+            text-decoration: none;
+            color: $text-color;
+            &:hover {
+                color: #ccc;
+            }
+        }
+        ul {
+            margin: 0px;
+            padding: 0px;
+        }
         li {
             list-style-image: none;
             list-style-type: none;
         }
+        h1 {
+            margin: 0px;
+        }
+        h2 {
+            margin: 0px;
+            color: $text-color;
+        }
+        h3 {
+            margin: 0px;
+            color: $text-color;
+        }
+        h5 {
+            margin: 0px 0px 15px 0px;
+        }
+        #navigation {
+            display: none;
+        }
+        .block {
+            margin: 0px;
+            padding: 0px;
+        }
     }
-    .region-header {
-        display: inline-block;
-        #block-menu-block-1 {
-            a:hover:before {
-                color: #fff !important;
-            }
-            a.active:before {
-                background: $main-color1;
-                color: #fff !important;
-            }
-            a:hover {
-                background: $main-color1;
-                color: #fff !important;
-            }
-            a.active {
-                background: $main-color1;
-                color: #fff !important;
-            }
-            a:before {
-                display: block;
-            }
+    
+    #header {
+        padding: 0px;
+        .block {
+            margin: 0px;
+        }
+        #logo {
+            display: inline-block;
+            float: left;
+            text-align: center;
+            background-color: #202020;
+            padding: 20px 0px;
+        }
+        ul {
+            margin: 0px;
+            padding: 0px;
             li {
-                height: 80px;
-                margin: 0px;
-                display: inline-block;
-                position: relative;
-                /*padding:17px 0px 0px 0px;*/
-                a {
-                    -moz-transition: all 0.3s ease-in-out;
-                    -ms-transition: all 0.3s ease-in-out;
-                    -o-transition: all 0.3s ease-in-out;
-                    -webkit-transition: all 0.3s ease-in-out;
-                    transition: all 0.3s ease-in-out;
-                    -webkit-box-sizing: border-box;
-                    -moz-box-sizing: border-box;
-                    box-sizing: border-box;
-                    border-right: 2px solid #ECECEC;
-                    padding: 30px 0px;
-                    width: 100%;
-                    height: auto;
-                    text-align: center;
-                    display: block;
-                    color: $text-color;
-                    font-weight: bold;
-                }
+                list-style-image: none;
+                list-style-type: none;
             }
-            /*li.active:before{
+        }
+        .region-header {
+            display: inline-block;
+            #block-menu-block-1 {
+                a:hover:before {
+                    color: #fff !important;
+                }
+                a.active:before {
+                    background: $main-color1;
+                    color: #fff !important;
+                }
+                a:hover {
+                    background: $main-color1;
+                    color: #fff !important;
+                }
+                a.active {
+                    background: $main-color1;
+                    color: #fff !important;
+                }
+                a:before {
+                    display: block;
+                }
+                li {
+                    height: 80px;
+                    margin: 0px;
+                    display: inline-block;
+                    position: relative;
+                    /*padding:17px 0px 0px 0px;*/
+                    a {
+                        -moz-transition: all 0.3s ease-in-out;
+                        -ms-transition: all 0.3s ease-in-out;
+                        -o-transition: all 0.3s ease-in-out;
+                        -webkit-transition: all 0.3s ease-in-out;
+                        transition: all 0.3s ease-in-out;
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        box-sizing: border-box;
+                        border-right: 2px solid #ECECEC;
+                        padding: 30px 0px;
+                        width: 100%;
+                        height: auto;
+                        text-align: center;
+                        display: block;
+                        color: $text-color;
+                        font-weight: bold;
+                    }
+                }
+                /*li.active:before{
                 color: #000;
             }   */
+            }
+            #block-menu-block-3 {
+                li {
+                    border-bottom: 2px solid #ECECEC;
+                    @extend %text-v-center;
+                    height: 60px;
+                    a {
+                        font-size: 18px;
+                        color: #9b9b9b;
+                        font-weight: bold;
+                        &:hover {
+                            color: $main-color1;
+                        }
+                    }
+                }
+                li.last {
+                    border-bottom: 0px;
+                }
+            }
         }
-        #block-menu-block-3 {
-            li {
-                border-bottom: 2px solid #ECECEC;
-                @extend %text-v-center;
-                height: 60px;
-                a {
-                    font-size: 18px;
-                    color: #9b9b9b;
-                    font-weight: bold;
-                    &:hover {
-                        color: $main-color1;
+    }
+    
+    .header_bottom_wrap {
+        background-color: #5f5f5f;
+        .region-header-bottom {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .ctools-auto-submit-full-form {
+            .views-exposed-widgets {
+                max-width: 1000px;
+                margin: 0 auto;
+                #edit-tid-wrapper {
+                    float: none;
+                    .form-item {
+                        text-align: center;
+                        .form-type-bef-link {
+                            display: inline-block;
+                            padding: 0 20px;
+                            margin: 10px 0px;
+                            border-right: 1px solid #ffffff;
+                        }
+                        .form-type-bef-link:last-child {
+                            border: none;
+                        }
                     }
                 }
             }
-            li.last {
-                border-bottom: 0px;
+            .description {
+                display: none;
+            }
+            * {
+                color: #ffffff;
             }
         }
     }
-}
-
-.header_bottom_wrap {
-    background-color: #5f5f5f;
-    .region-header-bottom {
-        max-width: 1440px;
-        margin: 0 auto;
-    }
-}
-
-.banner {
-    img {
-        width: 100%;
-        height: auto;
-    }
-}
-
-#main {
-    #content {
+    
+    .banner {
         img {
             width: 100%;
+            height: auto;
         }
-        .flaticon-play-button4 {
-            display: inline-block !important;
-        }
-        #block-views-print-main-recommend-block-1,
-        #block-views-print-main-recommend-block-2,
-        #block-views-print-main-recommend-block-3 {
-            @extend %clearfix;
-            .views-row {
-                position: relative;
-                .views-field-title {
-                    position: absolute;
-                    bottom: 20px;
-                    left: 20px;
+    }
+    
+    #main {
+        #content {
+            img {
+                width: 100%;
+            }
+            .flaticon-play-button4 {
+                display: inline-block !important;
+            }
+            #block-views-print-main-recommend-block-1,
+            #block-views-print-main-recommend-block-2,
+            #block-views-print-main-recommend-block-3 {
+                @extend %clearfix;
+                .views-row {
+                    position: relative;
+                    .views-field-title {
+                        position: absolute;
+                        bottom: 20px;
+                        left: 20px;
+                    }
                 }
             }
-        }
-        #block-views-print-main-recommend-block-2 {
-            .views-row {
-                margin-bottom: 8px;
+            #block-views-print-main-recommend-block-2 {
+                .views-row {
+                    margin-bottom: 8px;
+                }
+                .views-row:last-child {
+                    margin-bottom: 0px;
+                }
             }
-            .views-row:last-child {
-                margin-bottom: 0px;
+            #block-views-print-main-recommend-block-3 {
+                .views-row {
+                    margin-bottom: 10px;
+                }
+                .views-row:last-child {
+                    margin-bottom: 0px;
+                }
             }
-        }
-        #block-views-print-main-recommend-block-3 {
-            .views-row {
-                margin-bottom: 10px;
-            }
-            .views-row:last-child {
-                margin-bottom: 0px;
-            }
+<<<<<<< HEAD
         }
         //code for 會員專區-----------------------------------------------------------------------
         .view-print-userinfo{
@@ -256,201 +302,263 @@ body {
                 .item-list {
                     ul {
                         li.views-row {}
+=======
+            //code for 首頁熱門討論區塊----------------------------------------------------------------
+            #block-views-print-discuss-block-1 {
+                .block-title {
+                    display: none;
+                }
+                h2 {
+                    text-align: center;
+                    position: relative;
+                    margin-bottom: 20px;
+                    &:after {
+                        content: "";
+                        display: block;
+                        height: 3px;
+                        width: 25%;
+                        background: $main-color1;
+                        position: absolute;
+                        left: 50%;
+                        @include transform-xy(-50%, 0);
+>>>>>>> 44890e69fe09a4570dd3ddf5cfeacf689465a654
                     }
                 }
-            }
-            .more-link {
-                position: absolute;
-                a {
-                    padding: 10px 20px;
-                    background: $main-color1;
-                }
-            }
-        }
-        //end 首頁熱門討論區塊
-        //code for首頁最新消息區塊----------------------------------------------------------------
-        #block-views-news-page-block-3 {
-            .view-content {
-                padding-bottom: 20px;
-                .item-list {
-                    ul {
-                        li.views-row {}
-                    }
-                }
-            }
-            .more-link {
-                position: absolute;
-                a {
-                    padding: 10px 20px;
-                    background: $main-color1;
-                }
-            }
-        }
-        //end 首頁最新消息區塊
-        //code for 首頁影片區塊--------------------------------------------------------------------------
-        #block-views-print-video-block-1 {
-            .view-content {
-                .item-list {
-                    ul {
-                        li.views-row {
-                            @include grid(1, 2%);
+                .view-content {
+                    padding-bottom: 40px;
+                    .item-list {
+                        ul {
+                            li.views-row {}
                         }
                     }
                 }
-            }
-        }
-        //end for 首頁影片區塊
-    }
-    .video-page {
-        .views-row {
-            position: relative;
-            margin-bottom: 10px;
-            .views-field-field-image {
-                .background-cover {
-                    height: 100%;
-                    width: 100%;
+                .more-link {
                     position: absolute;
-                    left: 0;
-                    top: 0;
-                    display: block;
-                    .cover-wrapper {
-                        display: inline-block;
+                    bottom: 0px;
+                    right: 0px;
+                    a {
+                        padding: 10px 20px;
+                        background: $main-color1;
+                        color: #ffffff;
+                    }
+                }
+            }
+            //end 首頁熱門討論區塊
+            //code for首頁最新消息區塊----------------------------------------------------------------
+            #block-views-news-page-block-3 {
+                .block-title {
+                    display: none;
+                }
+                h2 {
+                    text-align: center;
+                    position: relative;
+                    margin-bottom: 20px;
+                    &:after {
+                        content: "";
+                        display: block;
+                        height: 3px;
+                        width: 25%;
+                        background: $main-color1;
+                        position: absolute;
+                        left: 50%;
+                        @include transform-xy(-50%, 0);
+                    }
+                }
+                .view-content {
+                    padding-bottom: 40px;
+                    .item-list {
+                        ul {
+                            li.views-row {}
+                        }
+                    }
+                }
+                .more-link {
+                    position: absolute;
+                    bottom: 0px;
+                    right: 0px;
+                    a {
+                        padding: 10px 20px;
+                        background: $main-color1;
+                        color: #ffffff;
+                    }
+                }
+            }
+            //end 首頁最新消息區塊
+            //code for 首頁影片區塊--------------------------------------------------------------------------
+            #block-views-print-video-block-1 {
+                .view-content {
+                    .item-list {
+                        ul {
+                            li.views-row {
+                                @include grid(1, 2%);
+                            }
+                        }
+                    }
+                }
+                .more-link {
+                    position: absolute;
+                    bottom: 0px;
+                    right: 0px;
+                    a {
+                        padding: 10px 20px;
+                        background: $main-color1;
+                        color: #ffffff;
+                    }
+                }
+            }
+            //end for 首頁影片區塊
+        }
+        .video-page {
+            .views-row {
+                position: relative;
+                margin-bottom: 10px;
+                .views-field-field-image {
+                    .background-cover {
                         height: 100%;
                         width: 100%;
-                        position: relative;
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        display: block;
+                        .cover-wrapper {
+                            display: inline-block;
+                            height: 100%;
+                            width: 100%;
+                            position: relative;
+                            span.play {
+                                display: block;
+                                width: 60px;
+                                height: 60px;
+                                border-radius: 60px;
+                                border: 7px solid #FFF;
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                margin-left: -33px;
+                                margin-top: -33px;
+                                -o-transition: all 0.3s ease-in-out;
+                                -webkit-transition: all 0.3s ease-in-out;
+                                -moz-transition: all 0.3s ease-in-out;
+                                opacity: 0.7;
+                                &:after {
+                                    display: block;
+                                    content: ' ';
+                                    width: 0;
+                                    height: 0;
+                                    border-style: solid;
+                                    border-width: 15px 0 15px 30px;
+                                    border-color: transparent transparent transparent #ffffff;
+                                    position: relative;
+                                    left: 20px;
+                                    top: 15px;
+                                }
+                                &:hover {
+                                    opacity: 1;
+                                }
+                            }
+                        }
+                    }
+                }
+                .views-field-title {
+                    position: absolute;
+                    bottom: 30px;
+                    left: 30px;
+                    font-weight: bold;
+                    color: #fff;
+                    font-size: 24px;
+                    a {
+                        color: #fff;
+                    }
+                }
+            }
+            .views-row-first {
+                margin-bottom: 30px !important;
+                .background-cover {
+                    .cover-wrapper {
                         span.play {
-                            display: block;
-                            width: 60px;
-                            height: 60px;
-                            border-radius: 60px;
-                            border: 7px solid #FFF;
-                            position: absolute;
-                            top: 50%;
-                            left: 50%;
-                            margin-left: -33px;
-                            margin-top: -33px;
-                            -o-transition: all 0.3s ease-in-out;
-                            -webkit-transition: all 0.3s ease-in-out;
-                            -moz-transition: all 0.3s ease-in-out;
-                            opacity: 0.7;
+                            width: 100px !important;
+                            height: 100px !important;
+                            margin-left: -50px !important;
+                            margin-top: -50px !important;
                             &:after {
                                 display: block;
                                 content: ' ';
                                 width: 0;
                                 height: 0;
                                 border-style: solid;
-                                border-width: 15px 0 15px 30px;
+                                border-width: 30px 0 30px 60px !important;
                                 border-color: transparent transparent transparent #ffffff;
                                 position: relative;
-                                left: 20px;
-                                top: 15px;
-                            }
-                            &:hover {
-                                opacity: 1;
+                                left: 30px !important;
+                                top: 20px !important;
                             }
                         }
                     }
                 }
             }
-            .views-field-title {
-                position: absolute;
-                bottom: 30px;
-                left: 30px;
-                font-weight: bold;
-                color: #fff;
-                font-size: 24px;
-                a {
+        }
+    }
+    
+    .region-bottom {
+        #block-views-print-footer-link-block-1 {
+            .views-row {
+                .views-field-field-home-link {
+                    box-sizing: border-box;
+                    padding: 0 60px;
+                    .views-field-wrapper {
+                        .views-field-title-wrapper {
+                            padding: 18% 0;
+                            .link-title {
+                                margin: 20px 0;
+                                font-size: 30px;
+                            }
+                            .sub-title {
+                                margin: 20px 0;
+                                font-size: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+            .views-row-1 {
+                background-color: $main-color1;
+                .views-field-field-home-link {
                     color: #fff;
-                }
-            }
-        }
-        .views-row-first {
-            margin-bottom: 30px !important;
-            .background-cover {
-                .cover-wrapper {
-                    span.play {
-                        width: 100px !important;
-                        height: 100px !important;
-                        margin-left: -50px !important;
-                        margin-top: -50px !important;
-                        &:after {
-                            display: block;
-                            content: ' ';
-                            width: 0;
-                            height: 0;
-                            border-style: solid;
-                            border-width: 30px 0 30px 60px !important;
-                            border-color: transparent transparent transparent #ffffff;
-                            position: relative;
-                            left: 30px !important;
-                            top: 20px !important;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
-.region-bottom {
-    #block-views-print-footer-link-block-1 {
-        .views-row {
-            .views-field-field-home-link {
-                box-sizing: border-box;
-                padding: 0 60px;
-                .views-field-wrapper {
-                    .views-field-title-wrapper {
-                        padding: 18% 0;
-                        .link-title {
-                            margin: 20px 0;
-                            font-size: 30px;
-                        }
-                        .sub-title {
-                            margin: 20px 0;
-                            font-size: 20px;
-                        }
-                    }
-                }
-            }
-        }
-        .views-row-1 {
-            background-color: $main-color1;
-            .views-field-field-home-link {
-                color: #fff;
-                position: relative;
-                .views-field-wrapper {
-                    .views-field-title-wrapper {
-                        a.think-more {
-                            position: absolute;
-                            bottom: 20px;
-                            right: 40px;
-                            border: 1px solid #fff;
-                            color: #fff;
-                            padding: 5px 15px;
-                            span.ext {
-                                display: none;
+                    position: relative;
+                    .views-field-wrapper {
+                        .views-field-title-wrapper {
+                            a.think-more {
+                                position: absolute;
+                                bottom: 20px;
+                                right: 40px;
+                                border: 1px solid #fff;
+                                color: #fff;
+                                padding: 5px 15px;
+                                span.ext {
+                                    display: none;
+                                }
                             }
                         }
                     }
                 }
             }
-        }
-        .views-row-2 {
-            background-color: #eeeeee;
-            .views-field-field-home-link {
-                color: $text-color;
-                position: relative;
-                .views-field-wrapper {
-                    .views-field-title-wrapper {
-                        a.think-more {
-                            position: absolute;
-                            bottom: 20px;
-                            right: 40px;
-                            border: 1px solid $text-color;
-                            color: $text-color;
-                            padding: 5px 15px;
-                            span.ext {
-                                display: none;
+            .views-row-2 {
+                background-color: #eeeeee;
+                .views-field-field-home-link {
+                    color: $text-color;
+                    position: relative;
+                    .views-field-wrapper {
+                        .views-field-title-wrapper {
+                            a.think-more {
+                                position: absolute;
+                                bottom: 20px;
+                                right: 40px;
+                                border: 1px solid $text-color;
+                                color: $text-color;
+                                padding: 5px 15px;
+                                span.ext {
+                                    display: none;
+                                }
                             }
                         }
                     }
@@ -458,372 +566,283 @@ body {
             }
         }
     }
-}
-
-// 分享專區 pig
-body.page-share {
-    #header {
-        #block-views-exp-share-page {
-            background-color: #646464;
-            .views-exposed-form {
-                .form-item {
-                    .form-type-bef-link {}
+    
+    // 分享專區 pig
+    body.page-share {
+        #header {
+            #block-views-exp-share-page {
+                background-color: #646464;
+                .views-exposed-form {
+                    .form-item {
+                        .form-type-bef-link {}
+                    }
                 }
             }
         }
+        .banner {
+            #block-views-share-block-2 {
+                .view-share {
+                    ul {
+                        list-style: none;
+                        padding: 0px;
+                        margin: 0px;
+                        .views-row {
+                            text-align: center;
+                            .views-field-field-image {
+                                img {}
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #page {
+            #main {
+                #content {
+                    .view-share {
+                        .item-list {
+                            .views-row {}
+                        }
+                    }
+                }
+                .sidebars {}
+            }
+        }
     }
-    .banner {
-        #block-views-share-block-2 {
-            .view-share {
+    
+    // 分享專區 pig
+    .footer_wrap {
+        width: 100%;
+        margin-top: 20px;
+        #footer {
+            padding: 0px;
+            .block {
+                margin: 0px;
+            }
+            #block-menu-block-2 {
+                max-width: 1200px;
+                margin: 0 auto;
+                .menu__item {
+                    padding: 10px 0px;
+                    a {
+                        color: #898989;
+                    }
+                }
                 ul {
-                    list-style: none;
                     padding: 0px;
                     margin: 0px;
-                    .views-row {
-                        text-align: center;
-                        .views-field-field-image {
-                            img {}
-                        }
+                    li {
+                        list-style: none;
                     }
                 }
-            }
-        }
-    }
-    #page {
-        #main {
-            #content {
-                .view-share {
-                    .item-list {
-                        .views-row {}
-                    }
-                }
-            }
-            .sidebars {}
-        }
-    }
-}
-
-// 分享專區 pig
-.footer_wrap {
-    width: 100%;
-    margin-top: 20px;
-    #footer {
-        padding: 0px;
-        .block {
-            margin: 0px;
-        }
-        #block-menu-block-2 {
-            max-width: 1200px;
-            margin: 0 auto;
-            .menu__item {
-                padding: 10px 0px;
-                a {
-                    color: #898989;
-                }
-            }
-            ul {
-                padding: 0px;
-                margin: 0px;
-                li {
-                    list-style: none;
-                }
-            }
-            .font_size {
-                font-size: 20px;
-            }
-            .menu-mlid-768,
-            .menu-mlid-788,
-            .menu-mlid-794,
-            .menu-mlid-799 {
                 .font_size {
-                    &:after {
-                        content: '-';
-                        display: block;
-                        margin: 5px;
-                    }
+                    font-size: 20px;
                 }
-            }
-        }
-        #block-block-1 {
-            @include zen-clear();
-            .copyright {
-                padding: 10px 0px;
-                text-align: center;
-                background-color: #DCDCDC;
-            }
-        }
-    }
-}
-
-//SkyRoxas 新知資訊-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//新知資訊page--------------------------------------------------------------------------------------------
-.page-news {
-    img {
-        height: auto;
-    }
-    a {
-        text-decoration: none;
-    }
-    ul {
-        margin: 0px;
-        padding: 0px;
-    }
-    li {
-        list-style-image: none;
-        list-style-type: none;
-    }
-    h1 {
-        margin: 0px;
-    }
-    h2 {
-        margin: 0px;
-        color: $text-color;
-    }
-    h5 {
-        margin: 0px 0px 15px 0px;
-    }
-    #navigation {
-        display: none;
-    }
-    .block {
-        margin: 0px;
-        padding: 0px;
-    }
-    //start for header-----------------------------------------------------------------------
-    #header {}
-    //end header
-    //start for header_bottom-----------------------------------------------------------
-    .header_bottom_wrap {
-        #block-views-exp-news-page-page {
-            .views-exposed-widgets {
-                max-width: 1000px;
-                margin: 0 auto;
-                #edit-tid-wrapper {
-                    float: none;
-                    .form-item {
-                        text-align: center;
-                        .form-type-bef-link {
-                            display: inline-block;
-                            padding: 0 20px;
-                            margin: 10px 0px;
-                            border-right: 1px solid #ffffff;
-                        }
-                        .form-type-bef-link:last-child {
-                            border: none;
+                .menu-mlid-768,
+                .menu-mlid-788,
+                .menu-mlid-794,
+                .menu-mlid-799 {
+                    .font_size {
+                        &:after {
+                            content: '-';
+                            display: block;
+                            margin: 5px;
                         }
                     }
                 }
             }
-            .description {
-                display: none;
-            }
-        }
-        * {
-            color: #ffffff;
-        }
-    }
-    //end for header_bottom
-    //start for banner code----------------------------------------------------------------
-    .banner {
-        //code for 新知資訊banner區塊-----------------------------------------
-        #block-views-news-page-block-2 {
-            @extend %clearfix;
-            .view-content {
-                .item-list {
-                    ul {
-                        li.views-row {
-                            @include grid(2, 0%);
-                        }
-                    }
-                }
-            }
-        }
-        //end 新知資訊banner區塊
-    }
-    //end banner code
-    #page {
-        #main {
-            padding: 0px;
-            //start content code---------------------------------------------------------------
-            #content {
-                #page-title {
-                    height: 50px;
-                }
-                //新知資訊區塊-------------------------------------------------------------
-                .new-page {
-                    .view-content {
-                        .item-list ul {
-                            @extend %li-height-same;
-                            li.views-row {
-                                background: #F8F8F8;
-                                @include grid(2, 2%);
-                                margin-bottom: 20px!important;
-                                .views-field {
-                                    padding: 0px 20px;
-                                }
-                                .views-field-field-news-taxonomy {
-                                    padding: 0px;
-                                }
-                                .views-field-body {
-                                    padding-bottom: 20px;
-                                }
-                            }
-                        }
-                    }
-                }
-                //end for 新知資訊區塊
-            }
-            //end content
-        }
-    }
-    //for sidebars code
-    .sidebars {
-        //for sarch block------------------------------------------------------------------------
-        #block-search-form {
-            height: 50px;
-        }
-        //end for search block
-        //新知資訊熱門區塊-----------------------------------------------------------------------
-        .popular-news-block {
-            .view-content {
-                .item-list ul {
-                    li.views-row {
-                        @include grid(1, 2%);
-                        background: #F8F8F8;
-                    }
-                }
-            }
-        }
-        //end for 新知資訊熱門區塊
-    }
-    //end sidebars
-    //for footer code----------------------------------------------------------------------------
-    .footer_wrap {}
-    //end footer
-}
-
-//SkyRoxas 討論區-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-//討論區page--------------------------------------------------------------------------------------------
-.page-taxonomy-term {
-    line-height: 2em;
-    img {
-        height: auto;
-    }
-    a {
-        text-decoration: none;
-    }
-    ul {
-        margin: 0px;
-        padding: 0px;
-    }
-    li {
-        list-style-image: none;
-        list-style-type: none;
-    }
-    h1 {
-        margin: 0px;
-    }
-    h2 {
-        margin: 0px;
-        color: $text-color;
-    }
-    h3 {
-        margin: 0px;
-        color: $text-color;
-    }
-    h5 {
-        margin: 0px 0px 15px 0px;
-    }
-    #navigation {
-        display: none;
-    }
-    .block {
-        margin: 0px;
-        padding: 0px;
-    }
-    //start for header-----------------------------------------------------------------------
-    #header {}
-    //end header
-    //start for header_bottom-----------------------------------------------------------
-    .header_bottom_wrap {}
-    //end for header_bottom
-    //start for banner code----------------------------------------------------------------
-    .banner {}
-    //end banner code
-    #page {
-        #main {
-            padding: 0px;
-            //start content code---------------------------------------------------------------
-            #content {
-                //for討論區主分類------------------------------------------------------------------
-                #block-views-print-discuss-level1-block {
-                    @extend %clearfix;
-                    .view-content {
-                        .item-list {
-                            ul {
-                                li.views-row {
-                                    @include grid(4, 0%);
-                                }
-                            }
-                        }
-                    }
-                }
-                //end  code 討論區主分類 
-                #block-views-print-discuss-level1-block-1 {
-                    margin-top: 40px;
-                    @extend %clearfix;
-                }
-                //for討論區次分類----------------------------------------------------------------------
-                #block-menu-block-4 {
-                    max-width: 1440px;
-                    margin: 0 auto;
-                    margin-top: 40px;
+            #block-block-1 {
+                @include zen-clear();
+                .copyright {
+                    padding: 10px 0px;
                     text-align: center;
-                    border-top: 1px solid $border-color1;
-                    border-bottom: 1px solid $border-color1;
-                    .menu {
-                        li.menu__item {
-                            display: inline-block;
-                            padding: 10px 20px;
+                    background-color: #DCDCDC;
+                }
+            }
+        }
+    }
+    
+    //SkyRoxas 新知資訊-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //新知資訊page--------------------------------------------------------------------------------------------
+    .page-news {
+        //start for header-----------------------------------------------------------------------
+        #header {}
+        //end header
+        //start for header_bottom-----------------------------------------------------------
+        .header_bottom_wrap {}
+        //end for header_bottom
+        //start for banner code----------------------------------------------------------------
+        .banner {
+            //code for 新知資訊banner區塊-----------------------------------------
+            #block-views-news-page-block-2 {
+                @extend %clearfix;
+                .view-content {
+                    .item-list {
+                        ul {
+                            li.views-row {
+                                @include grid(2, 0%);
+                            }
                         }
                     }
-                    a {
-                        color: $text-color;
-                    }
                 }
-                //end for 討論區次分類
-                //for討論區內容-----------------------------------------------------------------------------
-                .view--print-discuss {
-                    margin-top: 40px;
-                    .view-content {
-                        .item-list {
-                            ul {
+            }
+            //end 新知資訊banner區塊
+        }
+        //end banner code
+        #page {
+            #main {
+                padding: 0px;
+                //start content code---------------------------------------------------------------
+                #content {
+                    #page-title {
+                        height: 50px;
+                    }
+                    //新知資訊區塊-------------------------------------------------------------
+                    .new-page {
+                        .view-content {
+                            .item-list ul {
                                 @extend %li-height-same;
                                 li.views-row {
-                                    position: relative;
+                                    background: #F8F8F8;
                                     @include grid(2, 2%);
                                     margin-bottom: 20px!important;
-                                    border: 1px solid $border-color1;
-                                    border-bottom: 5px solid $border-color1;
-                                    box-sizing: border-box;
-                                    padding: 0 20px 60px 20px;
-                                    .views-field-title {
-                                        padding: 15px 0px 10px 0px;
+                                    .views-field {
+                                        padding: 0px 20px;
                                     }
-                                    .views-field-created-1 {
-                                        position: absolute;
-                                        width: 95%;
-                                        left: 50%;
-                                        @include transform-xy(-50%, 0);
-                                        bottom: 0px;
-                                        border-top: 1px solid $border-color1;
-                                        .item {
-                                            display: inline-block;
-                                            padding: 10px;
+                                    .views-field-field-news-taxonomy {
+                                        padding: 0px;
+                                    }
+                                    .views-field-body {
+                                        padding-bottom: 20px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    //end for 新知資訊區塊
+                }
+                //end content
+            }
+        }
+        //for sidebars code
+        .sidebars {
+            //for sarch block------------------------------------------------------------------------
+            #block-search-form {
+                height: 50px;
+            }
+            //end for search block
+            //新知資訊熱門區塊-----------------------------------------------------------------------
+            .popular-news-block {
+                .view-content {
+                    .item-list ul {
+                        li.views-row {
+                            @include grid(1, 2%);
+                            background: #F8F8F8;
+                        }
+                    }
+                }
+            }
+            //end for 新知資訊熱門區塊
+        }
+        //end sidebars
+        //for footer code----------------------------------------------------------------------------
+        .footer_wrap {}
+        //end footer
+    }
+    
+    //SkyRoxas 討論區-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //討論區page--------------------------------------------------------------------------------------------
+    .page-taxonomy-term {
+        //start for header-----------------------------------------------------------------------
+        #header {}
+        //end header
+        //start for header_bottom-----------------------------------------------------------
+        .header_bottom_wrap {}
+        //end for header_bottom
+        //start for banner code----------------------------------------------------------------
+        .banner {}
+        //end banner code
+        #page {
+            #main {
+                padding: 0px;
+                //start content code---------------------------------------------------------------
+                #content {
+                    //for討論區主分類------------------------------------------------------------------
+                    #block-views-print-discuss-level1-block {
+                        @extend %clearfix;
+                        .view-content {
+                            .item-list {
+                                ul {
+                                    li.views-row {
+                                        @include grid(4, 0%);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    //end  code 討論區主分類 
+                    #block-views-print-discuss-level1-block-1 {
+                        margin-top: 40px;
+                        @extend %clearfix;
+                        * {
+                            color: $main-color1;
+                        }
+                    }
+                    //for討論區次分類----------------------------------------------------------------------
+                    #block-menu-block-4 {
+                        max-width: 1440px;
+                        margin: 0 auto;
+                        margin-top: 40px;
+                        text-align: center;
+                        border-top: 1px solid $border-color1;
+                        border-bottom: 1px solid $border-color1;
+                        .menu {
+                            li.menu__item {
+                                display: inline-block;
+                                padding: 10px 20px;
+                            }
+                        }
+                        a {
+                            color: $text-color;
+                        }
+                    }
+                    //end for 討論區次分類
+                    //for討論區內容-----------------------------------------------------------------------------
+                    .view--print-discuss {
+                        margin-top: 40px;
+                        .view-content {
+                            .item-list {
+                                ul {
+                                    @extend %li-height-same;
+                                    li.views-row {
+                                        position: relative;
+                                        @include grid(2, 2%);
+                                        margin-bottom: 20px!important;
+                                        border: 1px solid $border-color1;
+                                        border-bottom: 7px solid $border-color1;
+                                        box-sizing: border-box;
+                                        padding: 0 20px 60px 20px;
+                                        .views-field-title {
+                                            padding: 15px 0px 10px 0px;
+                                            a {
+                                                color: $main-color1;
+                                            }
                                         }
-                                        .comment,
-                                        .totalcount {
-                                            float: right;
+                                        .views-field-created-1 {
+                                            position: absolute;
+                                            width: 95%;
+                                            left: 50%;
+                                            @include transform-xy(-50%, 0);
+                                            bottom: 0px;
+                                            border-top: 1px solid $border-color1;
+                                            .item {
+                                                display: inline-block;
+                                                padding: 10px;
+                                            }
+                                            .comment,
+                                            .totalcount {
+                                                float: right;
+                                            }
                                         }
                                     }
                                 }
@@ -831,14 +850,13 @@ body.page-share {
                         }
                     }
                 }
+                //end content
             }
-            //end content
         }
+        //for sidebars code
+        .sidebars {}
+        //end sidebars
+        //for footer code----------------------------------------------------------------------------
+        .footer_wrap {}
+        //end footer
     }
-    //for sidebars code
-    .sidebars {}
-    //end sidebars
-    //for footer code----------------------------------------------------------------------------
-    .footer_wrap {}
-    //end footer
-}
