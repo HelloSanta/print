@@ -287,6 +287,12 @@ $zen-column-count: 24;
           width: zen-grid-item-width(24) !important;
         }
       }
+      //code for 會員專區-----------------------------------------------------------------------
+      #block-menu-block-5{
+        li{
+          @include grid(4,4%);
+        }
+      }
     }
     //end of content
   }

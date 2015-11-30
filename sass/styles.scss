@@ -218,6 +218,37 @@ body {
                 margin-bottom: 0px;
             }
         }
+        //code for 會員專區-----------------------------------------------------------------------
+        .view-print-userinfo{
+        	.field-name-real-name{
+        		margin-bottom: 20px;
+        		color: #e99d2d;
+        		font-size: 18px;
+        		font-weight: bold;
+        	}
+        }
+        #block-menu-block-5{
+
+        	ul{
+        		li{
+        			display: inline-block;
+        			a:before{
+        				display: block;
+        				font-size: 60px;
+        				padding-bottom: 10px;
+        			}
+        			a{
+        				padding: 50px 0;
+        				font-size: 18px;
+        				text-align: center;
+        				color: $text-color;
+        				width: 100%;
+        				border: 1px solid #ECECEC;
+        			}
+        		}
+        	}
+        }
+
         //code for 首頁熱門討論區塊----------------------------------------------------------------
         #block-views-print-discuss-block-1 {
             .view-content {
