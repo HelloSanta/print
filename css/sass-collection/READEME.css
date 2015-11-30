@@ -165,13 +165,25 @@
 .style-mask2 .style-wrapper .image:after {
   content: "";
   display: block;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
   background: rgba(0, 0, 0, 0.6);
 }
-/* line 102, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 103, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-mask2 .style-wrapper .content-wrapper {
   position: absolute;
   bottom: 0px;
   padding: 20px;
+}
+/* line 112, ../../sass/sass-collection/_drupal-block-style.scss */
+.style-mask2:hover .style-wrapper .image:after {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  background: rgba(0, 0, 0, 0);
 }
 
 /*<div class="style-wrapper">
@@ -183,16 +195,16 @@
 /***********************************************************
                                            圖片至左
 ***********************************************************/
-/* line 125, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 136, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-float-img1 .style-wrapper {
   position: relative;
 }
-/* line 128, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 139, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-float-img1 .style-wrapper .image {
   float: left;
   width: 50%;
 }
-/* line 132, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 143, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-float-img1 .style-wrapper .content-wrapper {
   float: left;
   width: 50%;
@@ -207,20 +219,20 @@
 <div class="create-date">[created]</div>
 <div class="taxonomy">[field_news_taxonomy]</div>
 </div>*/
-/* line 152, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 163, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-float-img2 .style-wrapper {
   position: relative;
 }
-/* line 155, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 166, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-float-img2 .style-wrapper .image {
   float: left;
   width: 50%;
 }
-/* line 158, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 169, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-float-img2 .style-wrapper .image img {
   float: left;
 }
-/* line 162, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 173, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-float-img2 .style-wrapper .taxonomy {
   position: absolute;
   bottom: 0px;
@@ -229,7 +241,7 @@
   box-sizing: border-box;
   padding: 15px 5%;
 }
-/* line 169, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 180, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-float-img2 .style-wrapper .taxonomy:before {
   content: "";
   display: block;
@@ -239,7 +251,7 @@
   position: absolute;
   top: 0px;
 }
-/* line 179, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 190, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-float-img2 .style-wrapper .content-wrapper {
   position: relative;
   float: left;
@@ -256,24 +268,24 @@
 <div class="title">[title]</div>
 <div class="create-date">[created]</div>
 </div>*/
-/* line 200, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 211, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-float-img3 {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   transition: all 0.5s;
 }
-/* line 202, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 213, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-float-img3 .style-wrapper {
   position: relative;
 }
-/* line 205, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 216, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-float-img3 .style-wrapper .image {
   position: relative;
   float: left;
   width: 20%;
 }
-/* line 209, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 220, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-float-img3 .style-wrapper .image:after {
   content: "";
   display: block;
@@ -289,7 +301,7 @@
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-/* line 219, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 230, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-float-img3 .style-wrapper .image a:after {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -299,7 +311,7 @@
   content: "";
   display: block;
 }
-/* line 226, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 237, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-float-img3 .style-wrapper .image a:before {
   content: "";
   display: block;
@@ -315,11 +327,11 @@
   transform: translate(-50%, -50%);
   z-index: 10;
 }
-/* line 240, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 251, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-float-img3 .style-wrapper .image img {
   float: left;
 }
-/* line 244, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 255, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-float-img3 .style-wrapper .content-wrapper {
   position: absolute;
   left: 20%;
@@ -327,7 +339,7 @@
   box-sizing: border-box;
   padding: 0px 5%;
 }
-/* line 258, ../../sass/sass-collection/_drupal-block-style.scss */
+/* line 269, ../../sass/sass-collection/_drupal-block-style.scss */
 .style-float-img3:hover .style-wrapper .image a:after {
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;

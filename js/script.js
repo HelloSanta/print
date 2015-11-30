@@ -22,6 +22,8 @@ Drupal.behaviors.my_custom_behavior = {
      	 $(".page-video #page-title").addClass("flaticon-play-button4");
 	});
 
+      $("#search-icon").html("<p>all</p>");
+
   }
 };
 

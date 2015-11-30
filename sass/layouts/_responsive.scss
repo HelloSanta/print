@@ -10,442 +10,344 @@
 
 // We are going to create a fluid grid with 1, 3, or 5 columns and 20px gutters
 // between columns (applied as 10px of left/right padding on each column).
-$zen-column-count:  1;
-$zen-gutter-width:  20px;
-
+$zen-column-count: 1;
+$zen-gutter-width: 20px;
 // If you need IE6/7 support for box-sizing: border-box (default), see _init.scss
 //$zen-box-sizing: content-box;
-
 // You can generate more efficient CSS if you manually apply the
 // zen-grid-item-base mixin to all grid items from within a single ruleset.
 $zen-auto-include-item-base: false;
 // $zen-auto-include-flow-item-base: false;
-
 // Suppress this section of CSS for RTL layouts since it contains no LTR-specific styles.
-@if $zen-reverse-all-floats == false {
-
-/**
+@if $zen-reverse-all-floats==false {
+    /**
  * Center the page.
  *
  * For screen sizes larger than 1200px, prevent excessively long lines of text
  * by setting a max-width.
  */
-#page
-{
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1440px;
-}
-
-/* Apply the shared properties of grid items in a single, efficient ruleset. */
-#header,
-#content,
-#navigation,
-.region-sidebar-first,
-.region-sidebar-second,
-#footer {
-  // See the note about $zen-auto-include-item-base above.
-  @include zen-grid-item-base();
-}
-
-/* Containers for grid items and flow items. */
-#header,
-#main,
-#footer {
-  @include zen-grid-container();
-}
-
-/* Navigation bar */
-@media all and (min-width: 480px) {
-  #main {
-    /* Move all the children of #main down to make room. */
-    padding-top: $nav-height;
-    position: relative;
-  }
-  #navigation {
-    /* Move the navbar up inside #main's padding. */
-    position: absolute;
-    top: 0;
-    height: $nav-height;
-    width: $zen-grid-width;
-  }
-}
-
+    #page {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1440px;
+    }
+    /* Apply the shared properties of grid items in a single, efficient ruleset. */
+    #header,
+    #content,
+    #navigation,
+    .region-sidebar-first,
+    .region-sidebar-second,
+    #footer {
+        // See the note about $zen-auto-include-item-base above.
+        @include zen-grid-item-base();
+    }
+    /* Containers for grid items and flow items. */
+    #header,
+    #main,
+    #footer {
+        @include zen-grid-container();
+    }
+    /* Navigation bar */
+    @media all and (min-width: 480px) {
+        #main {
+            /* Move all the children of #main down to make room. */
+            padding-top: $nav-height;
+            position: relative;
+        }
+        #navigation {
+            /* Move the navbar up inside #main's padding. */
+            position: absolute;
+            top: 0;
+            height: $nav-height;
+            width: $zen-grid-width;
+        }
+    }
 } // End of @if $zen-reverse-all-floats == true
 
 /**
  * Use 3 grid columns for smaller screens.
  */
+
 @media all and (min-width: 480px) and (max-width: 959px) {
-
-  $zen-column-count: 3;
-
-  /**
+    $zen-column-count: 3;
+    /**
    * The layout when there is only one sidebar, the left one.
    */
-  .sidebar-first {
-    /* Span 2 columns, starting in 2nd column from left. */
-    #content {
-      @include zen-grid-item(2, 2);
+    .sidebar-first {
+        /* Span 2 columns, starting in 2nd column from left. */
+        #content {
+            @include zen-grid-item(2, 2);
+        }
+        /* Span 1 column, starting in 1st column from left. */
+        .region-sidebar-first {
+            @include zen-grid-item(1, 1);
+        }
     }
-
-    /* Span 1 column, starting in 1st column from left. */
-    .region-sidebar-first {
-      @include zen-grid-item(1, 1);
-    }
-  }
-
-  /**
+    /**
    * The layout when there is only one sidebar, the right one.
    */
-  .sidebar-second {
-    /* Span 2 columns, starting in 1st column from left. */
-    #content {
-      @include zen-grid-item(2, 1);
+    .sidebar-second {
+        /* Span 2 columns, starting in 1st column from left. */
+        #content {
+            @include zen-grid-item(2, 1);
+        }
+        /* Span 1 column, starting in 3rd column from left. */
+        .region-sidebar-second {
+            @include zen-grid-item(1, 3);
+        }
     }
-
-    /* Span 1 column, starting in 3rd column from left. */
-    .region-sidebar-second {
-      @include zen-grid-item(1, 3);
-    }
-  }
-
-  /**
+    /**
    * The layout when there are two sidebars.
    */
-  .two-sidebars {
-    /* Span 2 columns, starting in 2nd column from left. */
-    #content {
-      @include zen-grid-item(2, 2);
+    .two-sidebars {
+        /* Span 2 columns, starting in 2nd column from left. */
+        #content {
+            @include zen-grid-item(2, 2);
+        }
+        /* Span 1 column, starting in 1st column from left. */
+        .region-sidebar-first {
+            @include zen-grid-item(1, 1);
+        }
+        /* Start a new row and span all 3 columns. */
+        .region-sidebar-second {
+            @include zen-grid-item(3, 1);
+            @include zen-nested-container(); // Since we're making every block in this region be a grid item.
+            @include zen-clear();
+            /* Apply the shared properties of grid items in a single, efficient ruleset. */
+            .block {
+                @include zen-grid-item-base();
+            }
+            /* Span 1 column, starting in the 1st column from left. */
+            .block:nth-child(3n+1) {
+                @include zen-grid-item(1, 1);
+                @include zen-clear();
+            }
+            /* Span 1 column, starting in the 2nd column from left. */
+            .block:nth-child(3n+2) {
+                @include zen-grid-item(1, 2);
+            }
+            /* Span 1 column, starting in the 3rd column from left. */
+            .block:nth-child(3n) {
+                @include zen-grid-item(1, 3);
+            }
+        }
     }
-
-    /* Span 1 column, starting in 1st column from left. */
-    .region-sidebar-first {
-      @include zen-grid-item(1, 1);
-    }
-
-    /* Start a new row and span all 3 columns. */
-    .region-sidebar-second {
-      @include zen-grid-item(3, 1);
-      @include zen-nested-container(); // Since we're making every block in this region be a grid item.
-      @include zen-clear();
-
-      /* Apply the shared properties of grid items in a single, efficient ruleset. */
-      .block {
-        @include zen-grid-item-base();
-      }
-      /* Span 1 column, starting in the 1st column from left. */
-      .block:nth-child(3n+1) {
-        @include zen-grid-item(1, 1);
-        @include zen-clear();
-      }
-      /* Span 1 column, starting in the 2nd column from left. */
-      .block:nth-child(3n+2) {
-        @include zen-grid-item(1, 2);
-      }
-      /* Span 1 column, starting in the 3rd column from left. */
-      .block:nth-child(3n) {
-        @include zen-grid-item(1, 3);
-      }
-    }
-  }
 }
+
 
 /**
  * Use 5 grid columns for larger screens.
  */
+
 @media all and (min-width: 960px) {
-
-  $zen-column-count: 24;
-
-  /**
+    $zen-column-count: 24;
+    /**
    * The layout when there is only one sidebar, the left one.
    */
-  .sidebar-first {
-    /* Span 4 columns, starting in 2nd column from left. */
-    #content {
-      @include zen-grid-item(4, 2);
+    .sidebar-first {
+        /* Span 4 columns, starting in 2nd column from left. */
+        #content {
+            @include zen-grid-item(4, 2);
+        }
+        /* Span 1 column, starting in 1st column from left. */
+        .region-sidebar-first {
+            @include zen-grid-item(1, 1);
+        }
     }
-
-    /* Span 1 column, starting in 1st column from left. */
-    .region-sidebar-first {
-      @include zen-grid-item(1, 1);
-    }
-  }
-
-  /**
+    /**
    * The layout when there is only one sidebar, the right one.
    */
-  .sidebar-second {
-    /* Span 4 columns, starting in 1st column from left. */
-    #content {
-      @include zen-grid-item(16, 1);
+    .sidebar-second {
+        /* Span 4 columns, starting in 1st column from left. */
+        #content {
+            @include zen-grid-item(16, 1);
+        }
+        /* Span 1 column, starting in 5th column from left. */
+        .region-sidebar-second {
+            @include zen-grid-item(8, 17);
+        }
     }
-
-    /* Span 1 column, starting in 5th column from left. */
-    .region-sidebar-second {
-      @include zen-grid-item(8, 17);
-    }
-  }
-
-  /**
+    /**
    * The layout when there are two sidebars.
    */
-  .two-sidebars {
-    /* Span 3 columns, starting in 2nd column from left. */
-    #content {
-      @include zen-grid-item(3, 2);
+    .two-sidebars {
+        /* Span 3 columns, starting in 2nd column from left. */
+        #content {
+            @include zen-grid-item(3, 2);
+        }
+        /* Span 1 column, starting in 1st column from left. */
+        .region-sidebar-first {
+            @include zen-grid-item(1, 1);
+        }
+        /* Span 1 column, starting in 5th column from left. */
+        .region-sidebar-second {
+            @include zen-grid-item(1, 5);
+        }
     }
-
-    /* Span 1 column, starting in 1st column from left. */
-    .region-sidebar-first {
-      @include zen-grid-item(1, 1);
-    }
-
-    /* Span 1 column, starting in 5th column from left. */
-    .region-sidebar-second {
-      @include zen-grid-item(1, 5);
-    }
-  }
 }
 
-
 $zen-column-count: 24;
+//min-width:480px//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 @media all and (min-width: 480px) {
-  #header{
-    width: zen-grid-item-width(24);
-    #logo{
-      width: zen-grid-item-width(10);
-    }
-    .region-header{
-      width: zen-grid-item-width(14);
-      #block-menu-block-1{
-         width: zen-grid-item-width(22);
-         float: left;
-        li{
-          -webkit-box-sizing: border-box;
-          -moz-box-sizing: border-box;
-          box-sizing: border-box;
-         @include grid(7,0%);
-        }
-      }
-      #block-menu-block-3{
-        width: zen-grid-item-width(2);
-        float: left;
-      }
-    }
-    
-  }
-  #main{
-    #content{
-      @include zen-grid-item-base();
-      #block-views-print-main-recommend-block-1{
-        @include zen-grid-item(8,1);
-        @include zen-grid-item-base();
-      }
-      #block-views-print-main-recommend-block-2{
-        @include zen-clear(right);
-        @include zen-grid-item(8,9);
-        @include zen-grid-item-base();
-      }
-      #block-views-print-main-recommend-block-3{
-        @include zen-clear(right);
-        @include zen-grid-item(8,1,right);
-        @include zen-grid-item-base();
-      }
-      //code for 首頁熱門討論區塊----------------------------------------------------------------
-      #block-views-print-discuss-block-1{
-         @include zen-grid-item(8,1);
-        @include zen-grid-item-base();
-        @include zen-clear(left);
-      }
-      //end 首頁熱門討論區塊
-      //code for首頁最新消息區塊----------------------------------------------------------------
-      #block-views-news-page-block-3{
-        @include zen-clear(right);
-        @include zen-grid-item(8,9);
-        @include zen-grid-item-base();
-      }
-      //end 首頁最新消息區塊
-      //code for 首頁影片區塊--------------------------------------------------------------------------
-      #block-views-print-video-block-1{
-        @include zen-clear(right);
-        @include zen-grid-item(8,1,right);
-        @include zen-grid-item-base();
-      }
-      //end for 首頁影片區塊
-      .video-page{
-        .views-row{
-           -webkit-box-sizing: border-box;
-          -moz-box-sizing: border-box;
-          box-sizing: border-box;
-          padding: 0px 5px;
-          width: zen-grid-item-width(12);
-          float: left;
-        }
-        .views-row-first{
-          width: zen-grid-item-width(24) !important;
-        }
-      }
-      //code for 會員專區-----------------------------------------------------------------------
-      #block-menu-block-5{
-        li{
-          @include grid(4,4%);
-        }
-      }
-    }
-    //end of content
-  }
-  //end of main
-  .region-bottom{
-    img{
-      width: 100%;
-      float: right;
-    }
-    #block-views-print-footer-link-block-1{
-      .views-row-1{
-        display: inline-block;
+    //for header code-------------------------------------------------
+    #header {
         width: zen-grid-item-width(24);
-        float: right;
-        .views-field-field-home-image{
-          width: zen-grid-item-width(12);
-          float: left;
+        #logo {
+            width: zen-grid-item-width(10);
         }
-        .views-field-field-home-link{
-           -webkit-box-sizing: border-box;
-          -moz-box-sizing: border-box;
-          box-sizing: border-box;
-           width: zen-grid-item-width(12);
-           float: left;
-        }
-      }
-      .views-row-2{
-        display: inline-block;
-        width: zen-grid-item-width(24);
-        float: right;
-        .views-field-field-home-image{
-          width: zen-grid-item-width(12);
-          float: right;
-        }
-        .views-field-field-home-link{
-           -webkit-box-sizing: border-box;
-          -moz-box-sizing: border-box;
-          box-sizing: border-box;
-           width: zen-grid-item-width(12);
-           float: right;
-        }
-      }
-    }
-  }
-
-   // 分享專區 pig
-    body.page-share {
-        #header {
-            #block-views-exp-share-page {
-                @include zen-clear();
-                background-color: #646464;
-                .views-exposed-form {
-                    .form-item {
-                        .form-type-bef-link {
-                            display: inline-block;
-                        }
-                    }
+        .region-header {
+            width: zen-grid-item-width(14);
+            #block-menu-block-1 {
+                width: zen-grid-item-width(22);
+                float: left;
+                li {
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                    @include grid(7, 0%);
                 }
             }
-        }
-        .banner {
-            @include zen-clear();
-            #block-views-share-block-2 {
-                .view-share {
-                    .views-row {
-                        @include grid(2, 0%);
-                    }
-                }
-            }
-        }
-        #page {
-            @include zen-clear();
-            #main {
-                #content {
-                    // @include zen-grid-item(18, 1);
-                    .view-share {
-                        .item-list {
-                            .views-row {
-                                @include grid(2, 2%);
-                                 
-                               
-                            }
-                        }
-                    }
-                }
-                // .sidebars {
-                //     @include zen-grid-item(6, 1, right);
-                // }
+            #block-menu-block-3 {
+                width: zen-grid-item-width(2);
+                float: left;
             }
         }
     }
-
-
-      // 影音專區 pig
-    body.page-share {
-        #header {
-            #block-views-exp-share-page {
-                @include zen-clear();
-                background-color: #646464;
-                .views-exposed-form {
-                    .form-item {
-                        .form-type-bef-link {
-                            display: inline-block;
-                        }
-                    }
+    .banner {
+        //分享專區banner區塊----------------------------------------------------------------------------------
+        #block-views-share-block-2 {
+            .view-share {
+                .views-row {
+                    @include grid(2, 0%);
                 }
             }
         }
-        .banner {
-            @include zen-clear();
-            #block-views-share-block-2 {
-                .view-share {
-                    .views-row {
-                        @include grid(2, 0%);
-                    }
+        //end for 分享專區banner區塊
+    }
+    //end for header code
+    #main {
+        //for content-code-------------------------------------------------------------------------------------------------------------
+        #content {
+            @include zen-grid-item-base();
+            //code for 首頁區塊--------------------------------------------------------------------------------
+            #block-views-print-main-recommend-block-1 {
+                @include zen-grid-item(8, 1);
+                @include zen-grid-item-base();
+            }
+            #block-views-print-main-recommend-block-2 {
+                @include zen-clear(right);
+                @include zen-grid-item(8, 9);
+                @include zen-grid-item-base();
+            }
+            #block-views-print-main-recommend-block-3 {
+                @include zen-clear(right);
+                @include zen-grid-item(8, 1, right);
+                @include zen-grid-item-base();
+            }
+            //end for 首頁區塊
+            //code for 首頁熱門討論區塊----------------------------------------------------------------
+            #block-views-print-discuss-block-1 {
+                @include zen-grid-item(8, 1);
+                @include zen-grid-item-base();
+                @include zen-clear(left);
+            }
+            //end 首頁熱門討論區塊
+            //code for首頁最新消息區塊----------------------------------------------------------------
+            #block-views-news-page-block-3 {
+                @include zen-clear(right);
+                @include zen-grid-item(8, 9);
+                @include zen-grid-item-base();
+            }
+            //end 首頁最新消息區塊
+            //code for 首頁影片區塊--------------------------------------------------------------------------
+            #block-views-print-video-block-1 {
+                @include zen-clear(right);
+                @include zen-grid-item(8, 1, right);
+                @include zen-grid-item-base();
+            }
+            //end for 首頁影片區塊
+            //code for 影音視訊page--------------------------------------------------------------------------
+            .video-page {
+                .views-row {
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                    padding: 0px 5px;
+                    width: zen-grid-item-width(12);
+                    float: left;
+                }
+                .views-row-first {
+                    width: zen-grid-item-width(24) !important;
                 }
             }
-        }
-        #page {
-            @include zen-clear();
-            #main {
-                #content {
-                    //@include zen-grid-item(18, 1);
-                    .view-share {
-                        .item-list {
-                            .views-row {
-                                @include grid(2, 2%);
-                                 
-                               
-                            }
-                        }
-                    }
+            //end for 影音視訊page
+            //code for 會員專區-----------------------------------------------------------------------
+            #block-menu-block-5 {
+                li {
+                    @include grid(4, 4%);
                 }
-                .sidebars {
-                    //@include zen-grid-item(6, 1, right);
+            }
+            //end for 會員專區
+        }
+        //end of content
+    }
+    //end of main
+    //for region bottom code-----------------------------------------------------------------------
+    .region-bottom {
+        img {
+            width: 100%;
+            float: right;
+        }
+        #block-views-print-footer-link-block-1 {
+            .views-row-1 {
+                display: inline-block;
+                width: zen-grid-item-width(24);
+                float: right;
+                .views-field-field-home-image {
+                    width: zen-grid-item-width(12);
+                    float: left;
+                }
+                .views-field-field-home-link {
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                    width: zen-grid-item-width(12);
+                    float: left;
+                }
+            }
+            .views-row-2 {
+                display: inline-block;
+                width: zen-grid-item-width(24);
+                float: right;
+                .views-field-field-home-image {
+                    width: zen-grid-item-width(12);
+                    float: right;
+                }
+                .views-field-field-home-link {
+                    -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                    box-sizing: border-box;
+                    width: zen-grid-item-width(12);
+                    float: right;
                 }
             }
         }
     }
-
-   .footer_wrap {
-    @include zen-clear(right);
-      #footer {
-          #block-menu-block-2 {
-              .menu-mlid-768,
-          .menu-mlid-788,
-          .menu-mlid-794,
-          .menu-mlid-799,
-          .menu-mlid-804 {
-                  
-                  @include grid(5, 2%);
-              }
-          }
-      }
-  }
+    //end for region-bottom
+    //code for footer code-------------------------------------------------------------------------------------
+    .footer_wrap {
+        @include zen-clear(right);
+        #footer {
+            #block-menu-block-2 {
+                .menu-mlid-768,
+                .menu-mlid-788,
+                .menu-mlid-794,
+                .menu-mlid-799,
+                .menu-mlid-804 {
+                    @include grid(5, 2%);
+                }
+            }
+        }
+    }
+    //end for footer code
 }
