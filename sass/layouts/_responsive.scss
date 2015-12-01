@@ -232,17 +232,17 @@ $zen-column-count: 24;
             //code for 首頁區塊--------------------------------------------------------------------------------
             #block-views-print-main-recommend-block-1 {
                 @include zen-grid-item(8, 1);
-                @include zen-grid-item-base();
+                //@include zen-grid-item-base();
             }
             #block-views-print-main-recommend-block-2 {
                 @include zen-clear(right);
                 @include zen-grid-item(8, 9);
-                @include zen-grid-item-base();
+                //@include zen-grid-item-base();
             }
             #block-views-print-main-recommend-block-3 {
                 @include zen-clear(right);
                 @include zen-grid-item(8, 1, right);
-                @include zen-grid-item-base();
+                //@include zen-grid-item-base();
             }
             //end for 首頁區塊
             //code for 首頁熱門討論區塊----------------------------------------------------------------

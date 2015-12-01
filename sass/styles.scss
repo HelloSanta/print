@@ -177,7 +177,7 @@
                             }
                         }
                         #search-icon {
-                            p{
+                            p {
                                 display: none;
                             }
                         }
@@ -281,17 +281,17 @@
                     #block-views-print-main-recommend-block-3 {
                         @extend %clearfix;
                         .views-row {
-                            position: relative;
-                            .views-field-title {
-                                position: absolute;
-                                bottom: 20px;
-                                left: 20px;
+                            padding: 6px;
+                            .views-field-field-home-image {
+                                img {
+                                    float: left;
+                                }
                             }
                         }
                     }
                     #block-views-print-main-recommend-block-2 {
                         .views-row {
-                            margin-bottom: 8px;
+                            //margin-bottom: 8px;
                         }
                         .views-row:last-child {
                             margin-bottom: 0px;
@@ -299,7 +299,7 @@
                     }
                     #block-views-print-main-recommend-block-3 {
                         .views-row {
-                            margin-bottom: 10px;
+                            //margin-bottom: 10px;
                         }
                         .views-row:last-child {
                             margin-bottom: 0px;
@@ -308,6 +308,7 @@
                     //end for 首頁區塊
                     //code for首頁最新消息區塊----------------------------------------------------------------
                     #block-views-news-page-block-3 {
+                        margin-top: 40px;
                         .block-title {
                             display: none;
                         }
@@ -371,6 +372,7 @@
                     //end for 新知資訊區塊
                     //code for 首頁熱門討論區塊----------------------------------------------------------------
                     #block-views-print-discuss-block-1 {
+                        margin-top: 40px;
                         .block-title {
                             display: none;
                         }
@@ -497,6 +499,9 @@
                     //end 討論區內容
                     //code for 首頁影片區塊--------------------------------------------------------------------------
                     #block-views-print-video-block-1 {
+                        @extend %clearfix;
+                        margin-top: 40px;
+                        position: relative;
                         .view-content {
                             .item-list {
                                 ul {
@@ -663,7 +668,12 @@
         //end sidebars
         //for region-bottom code--------------------------------------------------------------------------------------
         .region-bottom {
+            @extend %clearfix;
+            margin-top: 40px;
+            //code for region-bottom-block--------------------------------------------------------
             #block-views-print-footer-link-block-1 {
+                @extend %clearfix;
+                margin: 0px;
                 .views-row {
                     .views-field-field-home-link {
                         box-sizing: border-box;
@@ -728,6 +738,32 @@
                     }
                 }
             }
+            //end for region-bottom-block
+            //code for 頁尾區塊------------------------------------------------------------------------------
+            #block-imageblock-1 {
+                position: relative;
+                @extend %clearfix;
+                .block-image {
+                    @extend %clearfix;
+                    &:after{
+                        content:"";
+                        display: block;
+                        position: absolute;
+                        @extend %ab-full-screen;
+                        background: rgba(0,0,0,0.4);
+                    }
+                }
+                .block-body {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    @include transform-xy(-50%, -50%);
+                    text-align: center;
+                    color: #ffffff;
+                    font-size: 55px;
+                }
+            }
+            //end for 頁尾區塊
         }
         
         //end region-bottom
